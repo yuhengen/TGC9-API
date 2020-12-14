@@ -4,14 +4,14 @@ const hbs = require('hbs')
 const cookieParser = require('cookie-parser')
 const flash = require('connect-flash')
 const passport = require('./passport/setup');
+var cors = require('cors')
 
-function setupExpressApp(app) {
-    // use handlebars as the view engine (for templates) -- because there many other choices
+function setupExpressApp(app) { // use handlebars as the view engine (for templates) -- because there many other choices
     app.set('view engine', 'hbs')
     // we want our static files (images, css etc.) to be in a folder named public
     app.use(express.static('public'))
     // allows express to data submitted via forms
-    app.use(express.urlencoded({ extended: false }))
+    app.use(express.urlencoded({extended: false}))
     // allows express to process data submitted via JSON
     app.use(express.json());
 
@@ -33,8 +33,10 @@ function setupExpressApp(app) {
 
     app.use(passport.initialize());
     app.use(passport.session())
- 
 
+    app.use(cors())
 }
 
-module.exports = { setupExpressApp };
+module.exports = {
+    setupExpressApp
+};
