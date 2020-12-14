@@ -9,6 +9,14 @@ router.get('/', async (req, res) => {
     res.send(faults);
 })
 
+router.get('/:id', async (req, res) => {
+    let db = MongoUtil.getDB();
+    let fault = await db.collection('faults').findOne({
+        '_id': ObjectId(req.params.id)
+    });
+    res.send(fault);
+})
+
 router.post('/', async (req, res) => {
     let db = MongoUtil.getDB()
 
