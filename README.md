@@ -12,6 +12,8 @@ Uses the following boilerplate files:
 And we need to have `.env` file with the following settings:
 * `MONGO_URL`
 
+Now, add .env and node_modules to the .gitignore file
+
 ## Duplicate Package.json
 
 1. Copy the dependencies to the new package.json
